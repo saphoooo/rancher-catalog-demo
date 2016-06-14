@@ -1,5 +1,5 @@
 name: Demo App
 description: |
   Demo application for Rancher Catalog
-  version: 1.0
-  category: Education
+version: 1.0
+category: Education
