@@ -1,0 +1,27 @@
+internal-load-balancer:
+  scale: 1
+  load_balancer_config:
+    haproxy_config: {}
+  health_check:
+    port: 42
+    interval: 2000
+    unhealthy_threshold: 3
+    healthy_threshold: 2
+    response_timeout: 2000
+php-back-end:
+  scale: 1
+nginx-front-end:
+  scale: 1
+mysql-db:
+  external_ips:
+  - 10.0.2.28
+  health_check:
+    port: 3306
+    interval: 2000
+    initializing_timeout: 60000
+    unhealthy_threshold: 3
+    strategy: recreate
+    healthy_threshold: 2
+    response_timeout: 2000
+storage-backend:
+  scale: 1
