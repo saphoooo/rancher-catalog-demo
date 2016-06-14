@@ -1,3 +1,15 @@
+.catalog:
+  name: "Demo App"
+  version: 1.0
+  description: "Demo application for Rancher Catalog"
+  uuid: demo.1-0
+  questions:
+    - variable: "ENV"
+      description: "Choose the environment for the application, e.g. demo"
+      label: "Environment"
+      required: true
+      type: "string"
+
 internal-load-balancer:
   scale: 1
   load_balancer_config:
