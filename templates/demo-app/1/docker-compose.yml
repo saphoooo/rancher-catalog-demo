@@ -1,0 +1,41 @@
+internal-load-balancer:
+  expose:
+  - 80:80
+  tty: true
+  image: rancher/load-balancer-service
+  links:
+  - php-back-end:php-back-end
+  stdin_open: true
+php-back-end:
+  environment:
+    environment: demo
+  labels:
+    io.rancher.sidekicks: storage-backend
+    io.rancher.container.pull_image: always
+  tty: true
+  image: php
+  links:
+  - mysql-db:db
+  volumes_from:
+  - storage-backend
+  stdin_open: true
+nginx-front-end:
+  labels:
+    io.rancher.container.pull_image: always
+  tty: true
+  image: nginx:1.11
+  links:
+  - internal-load-balancer:php-back-end
+  stdin_open: true
+mysql-db:
+  image: rancher/external-service
+storage-backend:
+  labels:
+    io.rancher.container.pull_image: always
+  tty: true
+  image: busybox
+  links:
+  - mysql-db:db
+  volumes:
+  - /application_data:/var/www/html
+  stdin_open: true
