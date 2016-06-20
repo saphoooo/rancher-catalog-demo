@@ -1,0 +1,20 @@
+.catalog:
+  name: "Demo DNSmasq"
+  version: 1.0
+  description: "Demo DNSmasq for Rancher Catalog"
+  uuid: dnsmasq.1-0
+  questions:
+    - variable: "KEY"
+      description: "Host MUST have the label KEY (key1=value1)"
+      label: "Key"
+      type: "string"
+  questions:
+    - variable: "VALUE"
+      description: "Host MUST have the label VALUE (key1=value1)"
+      label: "Value"
+      type: "string"
+
+dnsmasq-data:
+  scale: 1
+dnsmasq:
+  scale: 1

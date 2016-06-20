@@ -1,0 +1,5 @@
+name: Demo DNSmasq
+description: |
+  Demo DNSmasq for Rancher Catalog
+version: 1.0
+category: Infrastructure

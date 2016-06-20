@@ -1,0 +1,24 @@
+dnsmasq-data:
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: ${KEY}=${VALUE}
+  tty: true
+  image: busybox
+  volumes:
+  - /data/dnsmasq.conf:/etc/dnsmasq.conf
+  stdin_open: true
+dnsmasq:
+  ports:
+  - 53:53/tcp
+  - 53:53/udp
+  labels:
+    io.rancher.sidekicks: dnsmasq-data
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label: ${KEY}=${VALUE}
+  tty: true
+  image: andyshinn/dnsmasq:2.75
+  volumes_from:
+  - dnsmasq-data
+  stdin_open: true
+  cap_add:
+  - NET_ADMIN
