@@ -6,11 +6,17 @@
   questions:
     - variable: "KEY"
       description: "Host MUST have the label KEY (key1=value1)"
-      label: "Key"
+      label: "io.rancher.scheduler.affinity:host_label: key"
       type: "string"
     - variable: "VALUE"
       description: "Host MUST have the label VALUE (key1=value1)"
-      label: "Value"
+      label: "io.rancher.scheduler.affinity:host_label: value"
+      type: "string"
+    - variable: "PATH"
+      description: "Path to dnsmasq.conf on Host"
+      label: "Path to dnsmasq.conf"
+      required: true
+      default: "/data/dnsmasq.conf"
       type: "string"
 
 dnsmasq-data:
