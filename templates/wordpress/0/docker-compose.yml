@@ -1,0 +1,26 @@
+wordpress-db:
+  environment:
+    MYSQL_ROOT_PASSWORD: ${root_password}
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpress
+    MYSQL_PASSWORD: ${db_password}
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.affinity:host_label_ne: function=frontend
+  tty: true
+  image: mariadb
+  stdin_open: true
+wordpress:
+  ports:
+  - ${public_port}:80/tcp
+  environment:
+    WORDPRESS_DB_NAME: wordpress
+    WORDPRESS_DB_USER: wordpress
+    WORDPRESS_DB_PASSWORD: ${db_password}
+  labels:
+    io.rancher.container.pull_image: always
+  tty: true
+  image: wordpress
+  links:
+  - wordpress-db:mysql
+  stdin_open: true

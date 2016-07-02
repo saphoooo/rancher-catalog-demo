@@ -1,0 +1,27 @@
+.catalog:
+  name: "Wordpress"
+  version: "v1"
+  description: "Blog tool, publishing platform and CMS"
+  uuid: Wordpress-1
+  questions:
+    - variable: public_port
+      description: "public port to access the wordpress site"
+      label: "Public Port"
+      required: true
+      default: "80"
+      type: "int"
+    - variable: root_password
+      description: “Mot de passe root mariadb”
+      label: “Root Password“
+      required: true
+      type: “password”
+    - variable: db_password
+      description: “Mot de passe wordpress mariadb”
+      label: “Wordpress Password“
+      required: true
+      type: “password”
+
+wordpress-db:
+  scale: 1
+wordpress:
+  scale: 1
