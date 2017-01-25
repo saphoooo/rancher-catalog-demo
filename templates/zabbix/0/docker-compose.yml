@@ -1,4 +1,4 @@
-mariadb
+mariadb:
   tty: true
   stdin_open: true
   image: mariadb:10.0
@@ -11,7 +11,7 @@ mariadb
     - 3306
   labels:
     io.rancher.container.pull_image: always
-zabbix-server
+zabbix-server:
   tty: true
   stdin_open: true
   image: zabbix-server-mysql:alpine-3.2.3
@@ -23,7 +23,7 @@ zabbix-server
     io.rancher.container.pull_image: always
   links:
     - mariadb:mariadb
-zabbix-web
+zabbix-web:
   tty: true
   stdin_open: true
   image: zabbix/zabbix-web-nginx-mysql:alpine-3.2.3
@@ -38,7 +38,7 @@ zabbix-web
   links:
     - zabbix-server:zabbix-server
     - mariadb:mariadb
-zabbix-agent
+zabbix-agent:
   tty: true
   stdin_open: true
   image: zabbix/zabbix-agent:alpine-3.2.3
