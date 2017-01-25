@@ -14,7 +14,7 @@ mariadb:
 zabbix-server:
   tty: true
   stdin_open: true
-  image: zabbix-server-mysql:alpine-3
+  image: zabbix/zabbix-server-mysql:alpine-3.2.3
   environment:
     - DB_SERVER_HOST=mariadb
     - MYSQL_USER=${MYSQL_USER}
