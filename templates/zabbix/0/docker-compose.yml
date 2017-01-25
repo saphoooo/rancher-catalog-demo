@@ -7,7 +7,7 @@ mariadb:
     - MYSQL_USER=${MYSQL_USER}
     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     - MYSQL_ALLOW_EMPTY_PASSWORD=true
-  Ports:
+  ports:
     - 3306
   labels:
     io.rancher.container.pull_image: always
