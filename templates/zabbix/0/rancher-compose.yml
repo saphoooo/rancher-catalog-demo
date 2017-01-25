@@ -22,5 +22,3 @@ zabbix-server:
   scale: 1
 zabbix-web:
   scale: 1
-zabbix-agent:
-  scale: 1

@@ -36,15 +36,3 @@ zabbix-web:
   links:
     - zabbix-server:zabbix-server
     - mariadb:mariadb
-zabbix-agent:
-  tty: true
-  stdin_open: true
-  image: zabbix/zabbix-agent:alpine-3.2.3
-  environment:
-    - ZBX_HOSTNAME=zabbix-server
-    - ZBX_SERVER_HOST=zabbix-server
-  labels:
-    io.rancher.container.pull_image: always
-    io.rancher.scheduler.global: true
-  links:
-    - zabbix-server:zabbix-server
