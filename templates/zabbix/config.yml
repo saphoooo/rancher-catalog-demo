@@ -1,0 +1,5 @@
+name: Zabbix
+description: |
+  Zabbix Server, Zabbix Web, Zabbix Agent
+version: 1.0
+category: Monitoring

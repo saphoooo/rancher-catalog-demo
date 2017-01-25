@@ -1,0 +1,52 @@
+mariadb
+  tty: true
+  stdin_open: true
+  image: mariadb:10.0
+  environment:
+    - MYSQL_DATABASE=zabbix
+    - MYSQL_USER=${MYSQL_USER}
+    - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    - MYSQL_ALLOW_EMPTY_PASSWORD=true
+  Ports:
+    - 3306
+  labels:
+    io.rancher.container.pull_image: always
+zabbix-server
+  tty: true
+  stdin_open: true
+  image: zabbix-server-mysql:alpine-3.2.3
+  environment:
+    - DB_SERVER_HOST=mariadb
+    - MYSQL_USER=${MYSQL_USER}
+    - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+  labels:
+    io.rancher.container.pull_image: always
+  links:
+    - mariadb:mariadb
+zabbix-web
+  tty: true
+  stdin_open: true
+  image: zabbix/zabbix-web-nginx-mysql:alpine-3.2.3
+  environment:
+    - DB_SERVER_HOST=mariadb
+    - MYSQL_USER=${MYSQL_USER}
+    - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    - ZBX_SERVER_HOST=zabbix-server
+    - TZ=${TZ}
+  labels:
+    io.rancher.container.pull_image: always
+  links:
+    - zabbix-server:zabbix-server
+    - mariadb:mariadb
+zabbix-agent
+  tty: true
+  stdin_open: true
+  image: zabbix/zabbix-agent:alpine-3.2.3
+  environment:
+    - ZBX_HOSTNAME=zabbix-server
+    - ZBX_SERVER_HOST=zabbix-server
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.global: true
+  links:
+    - zabbix-server:zabbix-server

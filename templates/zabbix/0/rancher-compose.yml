@@ -1,0 +1,26 @@
+.catalog:
+  name: "Zabbix"
+  version: 1.0
+  description: "Zabbix Server, Zabbix Web, Zabbix Agent"
+  uuid: zabbix.1-0
+  questions:
+    - variable: "MYSQL_USER"
+      description: "Choose MySQL user name"
+      label: "MySQL user"
+      required: true
+      type: "string"
+
+    - variable: "MYSQL_PASSWORD"
+      description: "Choose MySQL password"
+      label: "MySQL password"
+      required: true
+      type: "password"
+
+mariadb:
+  scale: 1
+zabbix-server:
+  scale: 1
+zabbix-web:
+  scale: 1
+zabbix-agent:
+  scale: 1
