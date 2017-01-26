@@ -8,6 +8,7 @@
       description: "Choose MySQL user name"
       label: "MySQL user"
       required: true
+      default: "zabbix"
       type: "string"
 
     - variable: "MYSQL_PASSWORD"
