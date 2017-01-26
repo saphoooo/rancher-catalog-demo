@@ -2,6 +2,8 @@ mariadb:
   tty: true
   stdin_open: true
   image: mariadb:10.0
+  ports:
+    - 3306:3306/tcp
   environment:
     - MYSQL_DATABASE=zabbix
     - MYSQL_USER=${MYSQL_USER}
