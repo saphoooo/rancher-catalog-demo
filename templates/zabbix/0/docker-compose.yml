@@ -13,6 +13,8 @@ zabbix-server:
   tty: true
   stdin_open: true
   image: zabbix/zabbix-server-mysql:alpine-3.2.3
+  ports:
+    - 10051:10051/tcp
   environment:
     - DB_SERVER_HOST=mariadb
     - MYSQL_USER=${MYSQL_USER}
@@ -36,3 +38,11 @@ zabbix-web:
   links:
     - zabbix-server:zabbix-server
     - mariadb:mariadb
+  zabbix-web-lb:
+    image: rancher/lb-service-haproxy:v0.4.6
+    ports:
+    - 9090:9090/tcp
+    labels:
+      io.rancher.container.agent.role: environmentAdmin
+      io.rancher.container.create_agent: true
+      io.rancher.scheduler.global: true
