@@ -38,11 +38,11 @@ zabbix-web:
   links:
     - zabbix-server:zabbix-server
     - mariadb:mariadb
-  zabbix-web-lb:
-    image: rancher/lb-service-haproxy:v0.4.6
-    ports:
-    - 9090:9090/tcp
-    labels:
-      io.rancher.container.agent.role: environmentAdmin
-      io.rancher.container.create_agent: true
-      io.rancher.scheduler.global: true
+zabbix-web-lb:
+  image: rancher/lb-service-haproxy:v0.4.6
+  ports:
+  - 9090:9090/tcp
+  labels:
+    io.rancher.container.agent.role: environmentAdmin
+    io.rancher.container.create_agent: true
+    io.rancher.scheduler.global: true
