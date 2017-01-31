@@ -3,7 +3,7 @@ mariadb:
   stdin_open: true
   image: mariadb:10.0
   ports:
-    - 3306:3306/tcp
+    - 3306/tcp
   environment:
     - MYSQL_DATABASE=zabbix
     - MYSQL_USER=${MYSQL_USER}
@@ -16,7 +16,7 @@ zabbix-server:
   stdin_open: true
   image: zabbix/zabbix-server-mysql:alpine-3.2.3
   ports:
-    - 10051:10051/tcp
+    - 10051/tcp
   environment:
     - DB_SERVER_HOST=mariadb
     - MYSQL_USER=${MYSQL_USER}
