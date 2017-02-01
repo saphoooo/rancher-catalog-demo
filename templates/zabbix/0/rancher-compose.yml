@@ -1,6 +1,6 @@
 .catalog:
   name: "Zabbix"
-  version: 1.0
+  version: "1.0"
   description: "Zabbix Server, Zabbix Web, Zabbix Agent"
   uuid: zabbix.1-0
   questions:

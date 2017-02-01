@@ -1,5 +1,5 @@
 name: Zabbix
 description: |
-  Zabbix Server, Zabbix Web, Zabbix Agent
+  Zabbix Server, Zabbix Web, MariaDB
 version: 1.0
 category: Monitoring
